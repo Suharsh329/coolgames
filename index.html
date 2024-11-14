@@ -1,9 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Games</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Hello, world</h1>
+    <header>
+      <h1>Cool Games</h1>
+      <p>
+        Welcome to CoolGames - where fun meets challenge! Dive into our collection of exciting games and test your skills. 
+      </p>
+      <p>Ready to play? Let's get started!</p>
+    </header>
+    <section class="name-it">
+      <h2>Can you name it?</h2>
+      <p>Click "Play" to generate a category and a letter. The player must then say a word from that category starting with the given letter. If they succeed, the turn passes to the next player. If not, they must complete a fun challenge or task.</p>
+      <button id="name-it-button">Play</button>
+      <div id="name-it-play">
+        <p>Name something from <span id="name-it-category" class="name-it-prompt"></span> starting with the letter <span id="name-it-letter" class="name-it-prompt"></span>
+        </p>
+      </div>
+    </section>
   </body>
+  <script src="script.js"></script>
 </html>
