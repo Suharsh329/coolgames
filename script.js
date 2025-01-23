@@ -12,3 +12,15 @@ const canYouNameIt = () => {
 
 document.getElementById('name-it-button').addEventListener('click', canYouNameIt);
 document.getElementById('name-it-play').style.display = 'none';
+
+const whatsTheWord = () => {
+  const firstLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+  const secondLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+
+  document.getElementById('whats-the-word-first-letter').innerHTML = firstLetter;
+  document.getElementById('whats-the-word-second-letter').innerHTML = secondLetter;
+  document.getElementById('whats-the-word-play').style.display = 'block';
+};
+
+document.getElementById('whats-the-word-button').addEventListener('click', whatsTheWord);
+document.getElementById('whats-the-word-play').style.display = 'none';

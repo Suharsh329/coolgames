@@ -11,8 +11,8 @@ header {
     padding: 1em;
 }
 
-.name-it {
-    margin: 0 auto;
+.game-container {
+    margin: 0 auto 2rem;
     width: 50%;
     padding: 20px;
     background-color: #f9f9f9;
@@ -20,13 +20,13 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.name-it-prompt {
+.prompt {
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-#name-it-button {
+.play-button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
