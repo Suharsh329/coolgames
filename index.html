@@ -1,41 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cool Games</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>Cool Games</h1>
-      <p>
-        Welcome to CoolGames - where fun meets challenge! Dive into our collection of exciting games and test your skills. 
-      </p>
-      <p>Ready to play? Let's get started!</p>
-    </header>
-    <section class="game-container">
-      <h2>Can you name it?</h2>
-      <p>Click "Play" to generate a category and a letter. The player must then say a word from that category starting with the given letter. If they succeed, the turn passes to the next player. If not, they must complete a fun challenge or task. The game master's decision is final in any disputes.</p>
-      <button id="name-it-button" class="play-button">Play</button>
-      <div id="name-it-play">
-        <p>Name something from <span id="name-it-category" class="prompt"></span> starting with the letter <span id="name-it-letter" class="prompt"></span>
-        </p>
-      </div>
-    </section>
 
-    <section class="game-container">
-      <h2>What's the word?</h2>
-      <p>Click "Play" to generate two letters. The objective is to say a word starting with the first letter and ending with the second letter.
-        If the player succeeds, the turn passes to the next player. If not, they must complete a fun challenge or task. The game master's decision is final in any disputes.</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Games</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Cool Games</h1>
+    <p>
+      Welcome to CoolGames - where fun meets challenge! Dive into our collection of exciting games and test your skills.
+    </p>
+    <p>Ready to play? Let's get started!</p>
+    <small>*The game master's decision is final in any disputes.</small>
+  </header>
+  <section class="game-container">
+    <button class="timer-toggle" data-game="name-it">⏱</button>
+    <div class="timer-overlay" id="name-it-timer">
+      <div class="timer-display">00:00</div>
+      <div class="timer-controls">
+        <button class="timer-btn start">▶</button>
+        <button class="timer-btn stop">⏸</button>
+        <button class="timer-btn reset">↻</button>
+      </div>
+    </div>
+    <h2>Can you name it?</h2>
+    <p>Click "Play" to generate a category and a letter. The player must then say a word from that category starting
+      with the given letter. If they succeed, the turn passes to the next player. If not, they must complete a fun
+      challenge or task.
+    </p>
+    <button id="name-it-button" class="play-button">Play</button>
+    <div id="name-it-play">
+      <p>Name something from <span id="name-it-category" class="prompt"></span> starting with the letter <span
+          id="name-it-letter" class="prompt"></span>
       </p>
-      <button id="whats-the-word-button" class="play-button">Play</button>
-      <div id="whats-the-word-play">
-        <p><span id="whats-the-word-first-letter" class="prompt"></span>  <span id="whats-the-word-second-letter" class="prompt"></span>
+    </div>
+  </section>
+
+  <section class="game-container">
+    <button class="timer-toggle" data-game="whats-the-word">⏱</button>
+    <div class="timer-overlay" id="whats-the-word-timer">
+      <div class="timer-display">00:00</div>
+      <div class="timer-controls">
+        <button class="timer-btn start">▶</button>
+        <button class="timer-btn stop">⏸</button>
+        <button class="timer-btn reset">↻</button>
+      </div>
+    </div>
+    <h2>What's the word?</h2>
+    <p>Click "Play" to generate two letters. The objective is to say a word starting with the first letter and ending
+      with the second letter. If the player succeeds, the turn passes to the next player. If not, they must complete a
+      fun challenge or task.
+    </p>
+    <button id="whats-the-word-button" class="play-button">Play</button>
+    <div id="whats-the-word-play">
+      <p><span id="whats-the-word-first-letter" class="prompt"></span> <span id="whats-the-word-second-letter"
+          class="prompt"></span>
+      </p>
+    </div>
+  </section>
+
+  <section class="game-container">
+    <button class="timer-toggle" data-game="word-auction">⏱</button>
+    <div class="timer-overlay" id="word-auction-timer">
+      <div class="timer-display">00:00</div>
+      <div class="timer-controls">
+        <button class="timer-btn start">▶</button>
+        <button class="timer-btn stop">⏸</button>
+        <button class="timer-btn reset">↻</button>
+      </div>
+    </div>
+    <h2>Word Auction</h2>
+    <p>Click "Play" to start the auction. Players bid on how many words they can name from a mystery category - but the
+      category isn't revealed until after the bidding ends! The bidder then has 30 seconds to name words. They earn
+      1 point for each correct word, up to their bid amount (e.g., if you bid 7 and name 10 correct words, you still only
+      get 7 points). If they can't name at least their bid amount, they must complete a fun challenge or task.
+    </p>
+    <button id="word-auction-button" class="play-button">Play</button>
+    <div id="word-auction-play">
+      <div id="word-auction-bidding">
+        <p class="auction-phase">BIDDING PHASE</p>
+        <p>How many words can you name from a mystery category?</p>
+        <p>Start the bidding!</p>
+      </div>
+      <div id="word-auction-reveal" style="display: none;">
+        <p class="auction-phase">CHALLENGE PHASE</p>
+        <p>The category is: <span id="word-auction-category" class="prompt"></span>
         </p>
       </div>
-    </section>
-  </body>
-  <script type="module" src="script.js"></script>
-  <script type="module" src="categories.js"></script>
+    </div>
+  </section>
+  </div>
+  </section>
+
+  <section class="game-container">
+    <button class="timer-toggle" data-game="syllable-challenge">⏱</button>
+    <div class="timer-overlay" id="syllable-challenge-timer">
+      <div class="timer-display">00:00</div>
+      <div class="timer-controls">
+        <button class="timer-btn start">▶</button>
+        <button class="timer-btn stop">⏸</button>
+        <button class="timer-btn reset">↻</button>
+      </div>
+    </div>
+    <h2>Syllable Challenge</h2>
+    <p>Click "Play" to generate a number of syllables. Players must say a word with exactly that many syllables. For
+      example, if the number is 3, valid words include "elephant" (el-e-phant), "computer" (com-pu-ter), or "beautiful"
+      (beau-ti-ful). If they can't think of one, they must complete a fun challenge or task.
+    </p>
+    <button id="syllable-challenge-button" class="play-button">Play</button>
+    <div id="syllable-challenge-play">
+      <p>Say a word with exactly <span id="syllable-count" class="prompt"></span> syllables!</p>
+    </div>
+  </section>
+</body>
+<script type="module" src="script.js"></script>
+<script type="module" src="categories.js"></script>
+
 </html>

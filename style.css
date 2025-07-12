@@ -12,6 +12,7 @@ header {
 }
 
 .game-container {
+    position: relative;
     margin: 0 auto 2rem;
     width: 50%;
     padding: 20px;
@@ -37,4 +38,99 @@ header {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+/* Timer toggle button */
+.timer-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.timer-toggle:hover {
+    background-color: #1976D2;
+    transform: scale(1.1);
+}
+
+/* Timer overlay */
+.timer-overlay {
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 20;
+    min-width: 150px;
+}
+
+.timer-overlay.active {
+    display: block;
+}
+
+.timer-overlay .timer-display {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.timer-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #555;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.timer-btn:hover {
+    background-color: #666;
+}
+
+.timer-btn.start:hover {
+    background-color: #4CAF50;
+}
+
+.timer-btn.stop:hover {
+    background-color: #f44336;
+}
+
+.timer-btn.reset:hover {
+    background-color: #FF9800;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-container {
+        width: 90%;
+    }
+    
+    .timer-overlay {
+        right: 10px;
+        top: 60px;
+    }
 }
