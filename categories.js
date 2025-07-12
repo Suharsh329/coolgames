@@ -21,7 +21,6 @@ export default [
   "Books",
   "Famous People",
   'Hairstyles',
-  "Brands",
   "Sports",
   "Songs",
   "Bands or Artists",
