@@ -34,7 +34,7 @@ const wordAuction = () => {
   document.getElementById('word-auction-bidding').style.display = 'block';
   document.getElementById('word-auction-reveal').style.display = 'none';
   document.getElementById('word-auction-play').style.display = 'block';
-  
+
   // Change button to reveal mode
   document.getElementById('word-auction-button').textContent = 'Reveal Category';
   document.getElementById('word-auction-button').removeEventListener('click', wordAuction);
@@ -46,7 +46,7 @@ const revealCategory = () => {
     document.getElementById('word-auction-category').innerHTML = selectedCategory.toLowerCase();
     document.getElementById('word-auction-bidding').style.display = 'none';
     document.getElementById('word-auction-reveal').style.display = 'block';
-    
+
     // Change button back to start new auction
     document.getElementById('word-auction-button').textContent = 'New Auction';
     document.getElementById('word-auction-button').removeEventListener('click', revealCategory);
@@ -65,7 +65,7 @@ const syllableChallenge = () => {
   const totalWeight = weights.reduce((a, b) => a + b, 0);
   let random = Math.random() * totalWeight;
   let syllableCount = 1;
-  
+
   for (let i = 0; i < weights.length; i++) {
     random -= weights[i];
     if (random <= 0) {
@@ -73,12 +73,17 @@ const syllableChallenge = () => {
       break;
     }
   }
-  
+
+  // Select a random category
+  const category = categories[Math.floor(Math.random() * categories.length)];
+
   document.getElementById('syllable-count').innerHTML = syllableCount;
+  document.getElementById('syllable-category').innerHTML = category.toLowerCase();
+  
   // Update the text to use correct grammar
   const syllableText = syllableCount === 1 ? 'syllable' : 'syllables';
-  document.getElementById('syllable-challenge-play').innerHTML = 
-    `<p>Say a word with exactly <span id="syllable-count" class="prompt">${syllableCount}</span> ${syllableText}!</p>`;
+  document.getElementById('syllable-challenge-play').innerHTML =
+    `<p>Say a word from <span id="syllable-category" class="prompt">${category.toLowerCase()}</span> with exactly <span id="syllable-count" class="prompt">${syllableCount}</span> ${syllableText}!</p>`;
   document.getElementById('syllable-challenge-play').style.display = 'block';
 };
 
@@ -94,18 +99,18 @@ class GameTimer {
     this.interval = null;
     this.displayElement = document.querySelector(`#${gameId}-timer .timer-display`);
     this.overlayElement = document.getElementById(`${gameId}-timer`);
-    
+
     // Set up event listeners
     const toggleBtn = document.querySelector(`[data-game="${gameId}"]`);
     const startBtn = document.querySelector(`#${gameId}-timer .timer-btn.start`);
     const stopBtn = document.querySelector(`#${gameId}-timer .timer-btn.stop`);
     const resetBtn = document.querySelector(`#${gameId}-timer .timer-btn.reset`);
-    
+
     toggleBtn.addEventListener('click', () => this.toggleOverlay());
     startBtn.addEventListener('click', () => this.start());
     stopBtn.addEventListener('click', () => this.stop());
     resetBtn.addEventListener('click', () => this.reset());
-    
+
     // Close overlay when clicking outside
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.timer-overlay') && !e.target.closest('.timer-toggle')) {
@@ -113,17 +118,17 @@ class GameTimer {
       }
     });
   }
-  
+
   toggleOverlay() {
     this.overlayElement.classList.toggle('active');
   }
-  
+
   updateDisplay() {
     const displayMinutes = this.minutes.toString().padStart(2, '0');
     const displaySeconds = this.seconds.toString().padStart(2, '0');
     this.displayElement.textContent = `${displayMinutes}:${displaySeconds}`;
   }
-  
+
   start() {
     if (!this.interval) {
       this.interval = setInterval(() => {
@@ -136,14 +141,14 @@ class GameTimer {
       }, 1000);
     }
   }
-  
+
   stop() {
     if (this.interval) {
       clearInterval(this.interval);
       this.interval = null;
     }
   }
-  
+
   reset() {
     this.stop();
     this.seconds = 0;
@@ -157,3 +162,52 @@ const nameItTimer = new GameTimer('name-it');
 const whatsTheWordTimer = new GameTimer('whats-the-word');
 const wordAuctionTimer = new GameTimer('word-auction');
 const syllableChallengeTimer = new GameTimer('syllable-challenge');
+
+// Word Auction counter controls
+document.addEventListener('keydown', function (event) {
+  const counter = document.getElementById('word-auction-counter');
+
+  // Only allow counter controls when Word Auction is active (visible)
+  const wordAuctionPlay = document.getElementById('word-auction-play');
+  if (wordAuctionPlay.style.display === 'none') {
+    return; // Don't respond to keys if game isn't active
+  }
+
+  if (event.key === '+' || event.key === '=') {
+    // Increment on + or = key
+    event.preventDefault();
+    counter.textContent = parseInt(counter.textContent) + 1;
+  } else if (event.key === '-') {
+    // Decrement on - key (prevent going below 0)
+    event.preventDefault();
+    counter.textContent = Math.max(0, parseInt(counter.textContent) - 1);
+  } else if (event.key === '0' && event.ctrlKey) {
+    // Reset on Ctrl+0 key combination
+    event.preventDefault();
+    counter.textContent = 0;
+  }
+});
+
+// Button controls for counter
+document.getElementById('counter-increment').addEventListener('click', function () {
+  const counter = document.getElementById('word-auction-counter');
+  counter.textContent = parseInt(counter.textContent) + 1;
+});
+
+document.getElementById('counter-decrement').addEventListener('click', function () {
+  const counter = document.getElementById('word-auction-counter');
+  counter.textContent = Math.max(0, parseInt(counter.textContent) - 1);
+});
+
+document.getElementById('counter-reset').addEventListener('click', function () {
+  const counter = document.getElementById('word-auction-counter');
+  counter.textContent = 0;
+});
+
+// Reset counter when starting new auction
+const originalWordAuction = wordAuction;
+wordAuction = () => {
+  // Reset counter when starting new auction
+  document.getElementById('word-auction-counter').textContent = 0;
+  originalWordAuction();
+};

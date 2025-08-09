@@ -123,12 +123,68 @@ header {
     background-color: #FF9800;
 }
 
+/* Word Auction counter */
+#word-auction-play {
+    position: relative;
+}
+
+.counter-container {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+}
+
+.auction-counter {
+    background: #222;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-size: 1.2em;
+    font-weight: bold;
+    opacity: 0.9;
+    min-width: 30px;
+    text-align: center;
+}
+
+.counter-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #555;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter-btn:hover {
+    background-color: #666;
+    transform: scale(1.1);
+}
+
+.counter-btn:active {
+    transform: scale(0.95);
+}
+
+.counter-btn.reset-btn:hover {
+    background-color: #FF9800;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .game-container {
         width: 90%;
     }
-    
+
     .timer-overlay {
         right: 10px;
         top: 60px;

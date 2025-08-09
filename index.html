@@ -76,7 +76,8 @@
     <h2>Word Auction</h2>
     <p>Click "Play" to start the auction. Players bid on how many words they can name from a mystery category - but the
       category isn't revealed until after the bidding ends! The bidder then has 30 seconds to name words. They earn
-      1 point for each correct word, up to their bid amount (e.g., if you bid 7 and name 10 correct words, you still only
+      1 point for each correct word, up to their bid amount (e.g., if you bid 7 and name 10 correct words, you still
+      only
       get 7 points). If they can't name at least their bid amount, they must complete a fun challenge or task.
     </p>
     <button id="word-auction-button" class="play-button">Play</button>
@@ -90,6 +91,12 @@
         <p class="auction-phase">CHALLENGE PHASE</p>
         <p>The category is: <span id="word-auction-category" class="prompt"></span></p>
         <p style="font-size: 0.9em; font-style: italic;">Score 1 point per correct word (max points = your bid)</p>
+      </div>
+      <div class="counter-container">
+        <button id="counter-decrement" class="counter-btn">-</button>
+        <div id="word-auction-counter" class="auction-counter">0</div>
+        <button id="counter-increment" class="counter-btn">+</button>
+        <button id="counter-reset" class="counter-btn reset-btn">↻</button>
       </div>
     </div>
   </section>
@@ -107,12 +114,12 @@
       </div>
     </div>
     <h2>Syllable Challenge</h2>
-    <p>Click "Play" to generate a number of syllables. Players must say a word with exactly that many syllables. For
+    <p>Click "Play" to generate a number of syllables. Players must say a word with exactly that many syllables (optionally from a category). For
       example, if the number is 3, valid words include "elephant" (el-e-phant), "computer" (com-pu-ter), or "beautiful"
       (beau-ti-ful). If they can't think of one, they must complete a fun challenge or task.</p>
     <button id="syllable-challenge-button" class="play-button">Play</button>
     <div id="syllable-challenge-play">
-      <p>Say a word with exactly <span id="syllable-count" class="prompt"></span> syllables!</p>
+      <p>Say a word from <span id="syllable-category" class="prompt"></span> with exactly <span id="syllable-count" class="prompt"></span> syllables!</p>
     </div>
   </section>
 </body>
