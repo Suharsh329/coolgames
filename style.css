@@ -28,7 +28,7 @@ header {
 }
 
 .play-button {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     padding: 10px 20px;
     text-align: center;
@@ -48,7 +48,7 @@ header {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #2196F3;
+    background-color: #2196f3;
     color: white;
     border: none;
     font-size: 20px;
@@ -58,7 +58,7 @@ header {
 }
 
 .timer-toggle:hover {
-    background-color: #1976D2;
+    background-color: #1976d2;
     transform: scale(1.1);
 }
 
@@ -86,7 +86,7 @@ header {
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-    font-family: 'Courier New', monospace;
+    font-family: "Courier New", monospace;
 }
 
 .timer-controls {
@@ -112,7 +112,7 @@ header {
 }
 
 .timer-btn.start:hover {
-    background-color: #4CAF50;
+    background-color: #4caf50;
 }
 
 .timer-btn.stop:hover {
@@ -120,7 +120,7 @@ header {
 }
 
 .timer-btn.reset:hover {
-    background-color: #FF9800;
+    background-color: #ff9800;
 }
 
 /* Word Auction counter */
@@ -176,7 +176,7 @@ header {
 }
 
 .counter-btn.reset-btn:hover {
-    background-color: #FF9800;
+    background-color: #ff9800;
 }
 
 /* Responsive adjustments */
